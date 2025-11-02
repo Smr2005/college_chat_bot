@@ -116,6 +116,10 @@ def chat(req: ChatRequest):
     except Exception as e:
         # Map internal errors to 502 for upstream failures
         raise HTTPException(status_code=502, detail=str(e))
+@app.get("/")
+def root():
+    return {"status": "ok", "app": APP_NAME}
+
 
 
 # For local dev: `python backend/main.py`
